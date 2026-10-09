@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teclear Al Revés</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+  
+    <nav id="navbar">
+      <header>
+      Typing Numbers Backwards ⇦RTL, <br>
+      A Technical Documentation Page
+      </header>
+      <ul>     
+		  <li><a class="nav-link" href="#Introduction">
+		        Introduction
+		      </a></li>
+		  <li><a class="nav-link" href="#Ms._Moriel_Schottlender">
+		        Ms. Moriel Schottlender
+		      </a></li>
+		  <li><a class="nav-link" href="#Many_Other_Ways">
+		        Many Other Ways
+		      </a></li>
+		  <li><a class="nav-link" href='#"Criss-Cross"_Multiplication'>
+		        "Criss-Cross" Multiplication
+		      </a></li>
+		  <li><a class="nav-link" href='#"Criss-Cross"_Practiceware'>
+		        "Criss-Cross" Practiceware
+		      </a></li>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>
+          Introduction
+        </header>
+        <p>I started looking for a way to type numbers backwards on a computer so that I could create an offline JavaScript app for practicing a multiplication technique that requires the answer to be typed in from right to left, from the ones digits up through the higher place-value digits of the answer. The final answer is read normally from left to right, but the answer is typed or hand-written from right to left, all on one line. It is called the "Criss-Cross System of Multiplication". I learned the method from the book <i>Vedic Mathematics Made Easy</i>, by Djaval Bathia. The relevant chapter can be <a target="_blank" href="https://freevedicmath.com/wp-content/uploads/2021/01/Criss-Cross-Method-of-Multiplication.pdf">downloaded for free</a>.
+        <p>My first problem was that I did not know how to type numbers backwards.</p>        
+      </section>
+      <section class="main-section" id="Ms._Moriel_Schottlender">
+        <header>Ms. Moriel Schottlender
+        </header>
+        <p>After researching online, I found writings and videos by Ms. Moriel Schottlender, Principal Engineer at Wikimedia Foundation, who is a specialist in how to display content in Wikipedia articles that use right-to-left languages like Hebrew, Arabic, or Persian. I contacted Ms. Schottlender by email and I explained my reason for wanting to type numbers backwards, and she replied immediately and solved my problem. The HTML tags <code>&lt;bdo dir="rtl" contenteditable&gt;&lt;/bdo&gt;</code>, when used with CSS to create a text entry area, will display any typed-in contents in reverse, both letters and numbers.</p>
+        <p>Ms. Schottlender gained her expertise by solving problems that arise when presenting right-to-left languages (like Hebrew, Arabic, or Persian) alongside left-to-right languages (like English) in Wikipedia pages and in software. Ms. Schottlender explains that displaying a mix of languages written in opposing directions on a webpage can be difficult because different browsers are not consistent in how they display changing directions of text. She describes her work as "system localization, supporting your user no matter where they are, and human-centered development."&nbsp; Ms. Schottlender emphasizes, "I create human-centered software", and her work assisting with correctly-formatted written communication in webpages and software presenting multiple languages written in different directions certainly qualifies as a human-centered endeavor to help people understand and communicate with each other. <a target="_blank" href="https://moriel.tech/"> Visit moriel.tech</a></p>
+
+<p>Typing numbers backwards was the <i>sine quo non</i> of my desired "criss-cross" multiplication practice app, and Ms. Schottlender gave me a quick and easy solution. Thank you, Ms. Moriel Schottlender.</p>
+<figure>
+  <img id="pic" src="https://moriel.tech/images/moriel-320px.jpg" alt="A photo of Moriel Schottlender, a.k.a 'mooeypoo', who is a senior software engineer at Wikipedia">
+  <figcaption>Ms. Moriel Schottlender, <br>
+     Principal Engineer at Wikimedia
+  </figcaption>
+</figure>
+  </section>
+
+      </section>
+      <section class="main-section" id="Many_Other_Ways">
+        <header>Many Other Ways
+        </header>
+        <p>All HTML tags that can display numbers and text can display the content in reverse order. In the non-exhaustive examples below, HTML tags that can display text and numbers backwards are first displayed as code examples and are then followed by editable fields created with those HTML tags to allow experimental editing by the reader. A button is provided after each editable field to clear any editing, and a final button is provided after all the editable fields to clear all the editing fields at once. Notes accompanying each HTML tag example will point out normal and odd behaviors.</p>
+        <p>However, for HTML tags to create a visible field on a webpage, CSS style declarations must state the height, width, and background color associated with the tags to create a rectangular area on the webpage (even if the background color is "none" or "transparent"). Border lines around the rectangle should also be declared to make it easier to see the rectangle. Further, many such rectangles will not be exteriorly editable unless the opening HTML tag is embedded with the boolean attribute statement of either <code>contenteditable</code> or <code>contenteditable="true"</code> (either works). Most HTML tags also need the CSS declaration of <code>unicode-bidi: bidi-override;</code> which reverses the direction of text from the normal order on the user's computer, whether that is forward or backward. However, there is one set of HTML tags that have the <code>unicode-bidi: bidi-override;</code> property by default, the <code>&lt;bdo&gt;&lt;/bdo&gt;</code> tags provided to me by Ms. Moriel Schottlender. Finally, the CSS declaration of <code>direction: rtl;</code> is needed to start typing backwards from the right side of an editable field that has the CSS declaration of <code>unicode-bidi: bidi-override;</code> or that default property. Otherwise, without that CSS declaration of <code>direction: rtl;</code>, the content will be displayed in reverse order by pushing content from off the left side of the entry field without the cursor ever moving, which looks strange and would not be usable for my "Criss-Cross" Multiplication Practiceware which must have numbers typed backwards and away from the right side of the entry field.</p>
+        <p>Each example set of HTML tags below will show an embedded class attribute statement of either <code>class="bidi"</code> or <code>class="noBidi"</code>. All the other CSS style declarations under both classes are the same: </p>
+        <pre>
+ .bidi {      
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    width: 300px;
+    height: 30px;
+    background-color: none;
+    border: 2px solid black;
+    display: inline-block;
+    padding: 5px;
+    padding-bottom: 0;
+    margin: 15px;
+    margin-top: 5px;
+    overflow: hidden;    
+ }
+
+ .noBidi {
+    direction: rtl;
+    display: inline-block;
+    width: 300px;
+    height: 30px;    
+    background-color: none;
+    border: 2px solid black;
+    padding: 5px;
+    padding-bottom: 0;
+    margin: 15px;
+    margin-top: 5px;
+    overflow: hidden;     
+ }             
+        </pre>
+        <p>Now for the examples: </p>
+        <code><mark>&lt;bdo class="noBidi" contenteditable&gt;&lt;/bdo&gt;</mark></code><br>
+Approved by Ms. Moriel Schottlender, the <code>&lt;bdo contenteditable&gt;&lt/bdo&gt;</code> tags do not need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse, and the text entry areas are always exteriorly editable with no odd behaviors. Click to edit: <br>
+<bdo class="noBidi" contenteditable></bdo> <button class="resetButton relative" onclick="resetBDO()">Reset Button</button><br>
+        <code><mark>&lt;div class="bidi" contenteditable&gt;&lt;/div&gt;</mark></code><br>
+The <code>&lt;div contenteditable&gt;&lt/div&gt;</code> tags need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse, but the text entry areas are always exteriorly editable with no odd behaviors. Click to edit:<br>
+<div class="bidi" contenteditable></div> <button class="resetButton relative" onclick="resetDiv()">Reset Button</button><br>
+        <code><mark>&lt;p class="bidi" contenteditable&gt;&lt;/p&gt;</mark></code><br> 
+The <code>&lt;p contenteditable&gt;&lt/p&gt;</code> tags need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse, but the text entry areas are always exteriorly editable with no odd behaviors. Click to edit:<br>
+<p class="bidi" contenteditable></p> <button class="resetButton relative" onclick="resetP()">Reset Button</button><br>
+        <code><mark>&lt;span class="bidi" contenteditable&gt;&lt;/span&gt;</mark></code><br>
+The <code>&lt;span contenteditable&gt;&lt/span&gt;</code> tags need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse, but the text entry areas are always exteriorly editable with no odd behaviors. Click to edit: <br>
+<span class="bidi" contenteditable></span> <button class="resetButton relative" onclick="resetSpan()">Reset Button</button><br>
+        <code><mark>&lt;button class="bidi" contenteditable>tide dna txet nottub kcilc&lt;/button></mark></code><br>
+The <code>&lt;button contenteditable&gt;&lt/button&gt;</code> tags need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse, but those tags ignore CSS declarations about the size of the text area and the background color. Further, the tags must already have text in between the tags (their inner HTML) to display exteriorly editable text, and that text must be clicked right before the first letter, or right after the last letter, or anywhere in between, for the text to be exteriorly editable. Otherwise, any click in pure whitespace (grayspace) does not provide cursor focus. Finally, if the text is edited to blank <i><b>and</b></i> cursor focus is lost by clicking elsewhere with a new cursor focus, the old cursor focus cannot be reestablished for further editing. Click within or right next to the displayed text to edit: <br>
+<button class="bidi" contenteditable>tide dna txet nottub kcilc</button> <button class="resetButton" onclick="resetButton()">Reset Button</button><br>
+       <code><mark>&lt;input type="button" class="bidi" value="9876543210" contenteditable&gt;</mark></code> <br>
+The <code>&lt;input type="button" contenteditable value="9876543210"&gt;</code> tag needs the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present the quoted contents of its <code>value</code> attribute in reverse, but the tag ignores CSS declarations about the size of the text area and the background color. The tag has no closing tag, and hence no inner HTML between the opening and closing tag, and so it is called a void element (no inner HTML). Although the quoted contents of the tag's value attribute is displayed backwards as desired, the text from inside the value attribute is not exteriorly editable.
+Try clicking to edit: <br>
+<input type="button" class="bidi" value="9876543210" contenteditable> <br>
+      <p>While searching for alternate ways of displaying content backwards, I chanced upon Unicode codepoint <code><mark>&amp;#x202E;</mark></code>, which can be written in between any opening and closing HTML tags that can display text, and then all subsequent content inside the tags or added with exterior editing will be displayed backwards on the webpage without needing the CSS declaration of <code>unicode-bidi: bidi-override;</code>. (There is a sister codepoint <code>&amp;#x202D;</code> that will display all subsequent text forward.)</p>
+      <code><mark>&lt;div class="noBidi" contenteditable&gt;&amp;#x202E;&lt;/div&gt;</mark></code><br>
+The <code>&lt;div contenteditable&gt;&amp;#x202E;&lt/div&gt;</code> tags with the reverse-display codepoint &amp;#x202E; coded inside the tags do not need the CSS declaration of <code>unicode-bidi: bidi-override;</code> to present contents in reverse. However, the codepoint <code>&amp;#x202E;</code> can be accidentally deleted from the underlying inner HTML by backspacing one more time after using backspace to exteriorly edit and remove all previously inserted contents. Further, even with the codepoint &amp;#x202E; still intact, clicking at the farthest right edge in the text entry area and then adding content will insert that content at a position in the inner HTML <b><i>before</i></b> the reverse-display codepoint; and, thus, that content will not display in reverse order. These errors were haphazard (sometimes occurring, sometimes not) and were hard to figure out until I used the Chrome developer tools to zero in on the div element while making entries and backspacing out the content. The reverse-display codepoint method is currently too error-prone to be reliable. The Reset Button adds the codepoint &amp;#x202E; back into the div if it has been accidentally removed, but content that is accidentally inserted before the reverse-display codepoint would need another solution. Click to edit: <br>
+<div class="noBidi" contenteditable>&#x202E;</div> <button class="resetButton relative" onclick="resetCodepoint1st()">Reset Button</button><br>
+       <p>Before Ms. Moriel Schottlender had given me a way to type numbers backwards with the <code>&lt;bdo&gt;&lt;/bdo&gt;</code> tags, I had thought that I might have to use JavaScript to immediately display each number in reverse order after each number is typed. Every programming language has a routine way of reversing the digits of a number. <i>See</i>, the linked <a target="_blank" href="https://www.geeksforgeeks.org/dsa/write-a-program-to-reverse-digits-of-a-number/"> geeksforgeeks.org article</a>. However, such methods reverse a <em><b>whole</b></em> number rather than immediately displaying each number in reverse order as each number is typed.</p> 
+
+      <p>The text-entry area below uses JavaScript code to append each new number to a string of any previously typed numbers, and then the reverse-display codepoint (&amp;#x202E;) is concatenated before each updated string of numbers, and the current result is displayed after each new number is typed. As such, each newly typed number is immediately displayed in reverse order along with any previous numbers. A regular expression is used to filter out any entries that are not numbers.</p>
+
+      <p>Although the program works, it does not&mdash;as now written&mdash;allow common editing techniques like using the backspace key to remove numbers from the text-entry field. Even so, the program is a paradigm for how to alter typed-in entries using JavaScript and then immediately redisplay the content, thus effectively creating a little word processor.</p>
+
+      <code><mark>&lt;div class="noBidi" id="applet" contenteditable&gt;&lt;/div&gt;</mark></code><br>
+Click and enter numbers: <br>
+<div class="noBidi" id="applet" contenteditable></div> <button class="resetButton relative" onclick="resetCodepoint2nd()">Reset Button</button><br>
+The JavaScript code: <br> 
+<pre>
+  &lt;script type="text/javascript"&gt;
+
+      let str$ = "";
+      let reverseCodepoint$ = "&amp;#x202E;";
+      let display$ = "";
+
+      applet.addEventListener('keydown', (event) => {
+        event.preventDefault();
+        if (/^\d$/.test(event.key)) {
+            str$ = str$.concat(event.key);
+            display$ = (reverseCodepoint + str$);
+            applet.innerHTML = display$;
+        }
+      });
+
+  &lt;/script&gt;
+</pre> 
+      <p>Click to reset all the above editing fields: <button class="resetButton" onclick="resetEditingFields()">Reset All Button</button></p>
+        
+        
+      </section>
+      <section class="main-section" id='"Criss-Cross"_Multiplication'>
+        <header>"Criss-Cross" Multiplication
+        </header>
+        <p>The steps below show how to use the "criss-cross" method for multiplying a two-digit number by a two-digit number (here, 27 x 38): </p>
+  <ul id="less-styling">
+    <li> 7 x 8 = 56. Bring down your 6 and mentally carry your 5.
+      <pre>
+      <b>
+     2 7
+       ↕
+x    3 8
+————————
+       6
+      </b>
+      </pre>
+    </li>
+    <li> 8 x 2 = 16, add your carry of 5 for 21, and hold in memory.
+      <pre>
+      <b>
+     2 7
+      ⤡
+x    3 8
+————————
+       6
+      </b>
+      </pre>
+    </li>
+    <li> 3 x 7 = 21. Add you prior subtotal of 21 for 42. Bring down your 2 and mentally carry your 4.
+      <pre>
+      <b>
+     2 7
+      ⤢
+x    3 8
+————————
+     2 6
+      </b>
+      </pre>
+    </li>
+    <li> 3 x 2 = 6, add your carry of 4 for 10, and bring it down (01 in reverse).
+      <pre>
+      <b>
+     2 7
+     ↕
+x    3 8
+————————
+ 1 0 2 6
+      </b>
+      </pre>
+    </li>
+    <li> Note: When adding two-digit subtotals, like 78 + 45, I find it easier to add the tens-place digits and the ones-place digits separately, and then add them together. 70 + 40 = 110, and 8 + 5 = 13, and 110 + 13 = 123. If that was the sum of my cross-product subtotals, I would bring down my 3 and carry my 12. 
+    </li>
+  </ul>
+      </section>
+      <div id="lastLink"> <!-- section and header and instructions for Criss-Cross Practiceware -->
+      <section class="main-section" id='"Criss-Cross"_Practiceware'>
+        <header>"Criss-Cross" Practiceware
+        </header>
+        <p>Instructions: </p>
+      <ol>
+		    <li>Start the app and type in your answer (in reverse) to the problem that will appear.</li>  
+		    <li>Press the Enter key.</li>
+		    <li>If your answer is correct, a "Correct!" message will appear below your answer and will hold there until you press the Enter key again to generate a new problem.</li>
+		    <li>If your answer is wrong, your answer will be erased, and the correct answer will be displayed below your typing area to help you find your mistake. You will be repeatedly allowed to try again until your answer is correct.</li>		    
+      </ol>
+
+      </section> 
+      </div>  <!-- End of #lastLink -->
+      <div id="buttonBox">
+        <button id="startButton" onclick="toggleButton()">Start App</button>     
+      </div> <!-- End of #buttonBox -->
+    </main>
+    
+    <div id="appBox">
+    <div id="app">       
+    
+		 <div id="multiplicand"></div>
+	    <div id="times"></div><div id="multiplier"></div>
+	    <div id="subline"></div>    
+	    <bdo id="answerEntry" contenteditable="true"></bdo>
+	    <div id="resultCheckMssg"></div>
+	    
+    </div> <!-- End of #app -->
+    </div> <!-- End of #appBox -->
+    <div id="bottom-space"></div>  
+      
+  </body>
+  
+  <script type="text/javascript">
+  
+ /*  JavaScript for the reverse-display codepoint program: */
+
+ let str$ = "";
+ let reverseCodepoint$ = "&#x202E;";
+ let display$ = "";
+
+ applet.addEventListener('keydown', (event) => {
+   event.preventDefault();
+   if (/^\d$/.test(event.key)) {
+       str$ = str$.concat(event.key);
+       display$ = (reverseCodepoint$ + str$);
+       applet.innerHTML = display$;
+   }
+ }); 
+    
+/*  JavaScript for the reset buttons  */
+
+  let bidiTags = document.getElementsByClassName('bidi');
+  let noBidiTags = document.getElementsByClassName('noBidi');
+  let bdoTag = noBidiTags[0];
+  let divTag = bidiTags[0]; 
+  let pTag = bidiTags[1];
+  let spanTag = bidiTags[2];
+  let buttonTag = bidiTags[3];
+  let divCodepointTag1st = noBidiTags[1];
+  let divCodepointTag2nd = noBidiTags[2];
+  
+  function resetBDO() {
+  	 bdoTag.innerHTML = "";
+  };
+  
+  function resetDiv() {
+  	 divTag.innerHTML = "";
+  }
+  
+  function resetP() {
+  	 pTag.innerHTML = "";
+  };
+  
+  function resetSpan() {
+  	 spanTag.innerHTML = "";
+  };
+  
+  function resetButton() {
+  	 buttonTag.innerHTML = "tide dna txet nottub kcilc";
+  };
+  
+  function resetCodepoint1st() {    
+  	 divCodepointTag1st.innerHTML = reverseCodepoint$;
+  };
+  
+  function resetCodepoint2nd() {
+  	 divCodepointTag2nd.innerHTML = 
+  	   reverseCodepoint$;
+      str$ = "";
+      display$ = "";;
+  };
+  
+  function resetEditingFields() {       
+    bdoTag.innerHTML = "";
+    divTag.innerHTML = "";
+    pTag.innerHTML = "";
+    spanTag.innerHTML = "";
+    buttonTag.innerHTML = "tide dna txet nottub kcilc";
+    divCodepointTag1st.innerHTML = "&#x202E;";
+    divCodepointTag2nd.innerHTML = 
+      reverseCodepoint$;
+      str$ = "";
+      display$ = "";
+  };
+  
+  
+  const toggleButton = () => {    
+	 if (startButton.textContent==="Start App") {       
+	     startButton.classList.toggle("started");
+	     startButton.textContent = "Close App";          
+	     start();
+    } else if (startButton.textContent==="Close App") { 
+       startButton.classList.toggle("started");        
+	     multiplicand.innerHTML = "";
+	     times.innerHTML = ""; 
+	     multiplier.innerHTML = ""; 
+	     subline.innerHTML = "";
+	     answerEntry.textContent = "";
+	     resultCheckMssg.textContent = "";
+	     startButton.textContent = "Start App";
+	 }             
+  };
+  
+  function answerReverse(currentOrder) {
+	 let splitCharacters = currentOrder.split("");
+	 let reversedCharacters = splitCharacters.reverse();
+	 let newOrder = reversedCharacters.join("");
+	 return newOrder;           
+  };
+  
+  const enterPushed = () => {
+	  if (event.code==="Enter" || event.code==='NumpadEnter' && Number(answerReverse(answerEntry.textContent)) === product && resultCheckMssg.textContent === "") {
+	     event.preventDefault();
+	     resultCheckMssg.innerHTML = "<mark>Correct!</mark>";
+	  } else if (event.code==="Enter" || event.code==='NumpadEnter' && answerEntry.textContent !== "" && Number(answerReverse(answerEntry.textContent))!== product)
+	  {  event.preventDefault();         	
+	     resultCheckMssg.textContent = product;
+	     answerEntry.textContent = "";
+	  }  else if (event.code==="Enter" || event.code==='NumpadEnter' && Number(answerReverse(answerEntry.textContent)) === product &&  Number(resultCheckMssg.textContent) === product) {
+	     event.preventDefault();
+	     resultCheckMssg.innerHTML = "<mark>Correct!</mark>";
+	  } else if (event.code==="Enter" || event.code==='NumpadEnter' && resultCheckMssg.textContent === "Correct!" && Number(answerReverse(answerEntry.textContent)) === product) {
+	     event.preventDefault();
+	     answerEntry.textContent = "";
+	     resultCheckMssg.textContent = "";
+	     start();                	
+	  }
+  };                  
+
+  function start() { 
+    answerEntry.removeEventListener("keydown", enterPushed);
+    let rand1 = Math.floor(Math.random() * 100);
+	 if (rand1<10) {
+		  rand1=rand1+10;
+    }                 
+    let rand2 = Math.floor(Math.random() * 100);
+	 if (rand2<10) {
+		  rand2=rand2+10;
+	 }      
+    product = rand1 * rand2;               
+    multiplicand.innerHTML = rand1;
+    times.innerHTML = "&times;"; 
+    multiplier.innerHTML = rand2; 
+    subline.innerHTML = "————"; // m-dashes 
+    answerEntry.focus();
+    answerEntry.addEventListener("keydown", enterPushed);           
+};
+  
+  window.addEventListener("load", setPagePadding);
+  
+function setPagePadding() {
+	let viewportDiff = (932 - window.innerHeight);
+	let lastLinkDiff = (lastLink.getBoundingClientRect().height - 272);
+	let bottomAdjustment = (291 - viewportDiff - lastLinkDiff);
+	document.documentElement.style.setProperty("--spacer", `${bottomAdjustment}px`);
+};
+
+
+</script>
+  
+</html>
