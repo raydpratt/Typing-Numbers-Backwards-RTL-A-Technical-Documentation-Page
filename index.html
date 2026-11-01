@@ -374,7 +374,7 @@ x    3 8
   
 function setPagePadding() {
 	let viewportDiff = (932 - window.innerHeight);
-	let lastLinkDiff = (lastLink.getBoundingClientRect().height - 272);
+	let lastLinkDiff = (lastLink.getBoundingClientRect().height - 270);
 	let bottomAdjustment = (291 - viewportDiff - lastLinkDiff);
 	document.documentElement.style.setProperty("--spacer", `${bottomAdjustment}px`);
 };
